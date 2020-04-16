@@ -45,4 +45,4 @@ Returns a list of observation dictionaries from the input .csv file. Each dictio
 Returns two 2D-np.arrays: 
 - Ground-truth pointing vectors
 - Pointing vectors with uncertainties applied.
-- The shape of each 2D array is (# of sensors, 3)
+- The shape of each 2D array is (# of sensors, 3) 
