@@ -50,8 +50,8 @@ def get_sensors(sensor_file):
         for row in csv_reader:
             s = {}
             s['name'] = row[0]
-            s['sig_major'] = float(row[1]) # in radians
-            s['sig_minor'] = float(row[2])
+            s['sig_a'] = float(row[1]) # in radians
+            s['sig_b'] = float(row[2])
 
             if row[3].startswith('ellips'):
                 s['ellipsoidal'] = np.array([float(row[4]), float(row[5]), float(row[6])])
@@ -103,7 +103,7 @@ def get_pointing_vectors(sensors, obs_point):
         gt_pv = gt_pv / norm(gt_pv)
 
         # Apply uncertainties from sensor's LOS to pointing vector
-        pv = apply_uncertainty(gt_pv, s['sig_major'], s['sig_minor'])
+        pv = apply_uncertainty(gt_pv, s['sig_a'], s['sig_b'])
 
         pvectors[i,:] = pv
         gt_pvectors[i,:] = gt_pv
